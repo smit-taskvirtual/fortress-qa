@@ -3,14 +3,15 @@ import { useEffect, useRef, useState } from "react";
 import { Menu, X, Shield, ChevronDown } from "lucide-react";
 import { SERVICES } from "@/lib/services-data";
 
-const nav = [
+type NavItem = { to: string; label: string; dropdown?: boolean };
+const nav: NavItem[] = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services", dropdown: true },
   { to: "/insights", label: "Insights" },
   { to: "/partners", label: "Partners" },
   { to: "/contact", label: "Contact" },
-] as const;
+];
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
