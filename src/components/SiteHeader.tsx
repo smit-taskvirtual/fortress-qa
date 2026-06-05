@@ -65,7 +65,7 @@ export function SiteHeader() {
                 onMouseLeave={scheduleClose}
               >
                 <Link
-                  to={n.to}
+                  to={n.to as any}
                   className="text-sm text-muted-foreground hover:text-foreground transition-colors inline-flex items-center gap-1"
                   activeProps={{ className: "text-foreground" }}
                 >
@@ -123,7 +123,7 @@ export function SiteHeader() {
             ) : (
               <Link
                 key={n.to}
-                to={n.to}
+                to={n.to as any}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors"
                 activeProps={{ className: "text-foreground" }}
                 activeOptions={{ exact: n.to === "/" }}
@@ -200,7 +200,7 @@ export function SiteHeader() {
               ) : (
                 <Link
                   key={n.to}
-                  to={n.to}
+                  to={n.to as any}
                   onClick={() => setOpen(false)}
                   className="py-2.5 text-sm text-muted-foreground hover:text-foreground"
                   activeProps={{ className: "text-foreground" }}
