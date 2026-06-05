@@ -3,7 +3,7 @@ import { PageHero, Section } from "@/components/Section";
 import { FinalCTA } from "@/components/CTA";
 import { Cpu, ShieldCheck, Network, Eye, AlertTriangle, Check } from "lucide-react";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services — Fortress Consulting" },
