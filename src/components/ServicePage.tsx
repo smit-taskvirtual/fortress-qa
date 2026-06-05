@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowRight, Check, ArrowUpRight } from "lucide-react";
-import type { ComponentType, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { FinalCTA } from "@/components/CTA";
 import { SERVICES, type ServiceMeta } from "@/lib/services-data";
 
