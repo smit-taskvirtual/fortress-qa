@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as PartnersRouteImport } from './routes/partners'
+import { Route as MediaKitRouteImport } from './routes/media-kit'
 import { Route as InsightsRouteImport } from './routes/insights'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BooksRouteImport } from './routes/books'
@@ -21,6 +22,11 @@ import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 const PartnersRoute = PartnersRouteImport.update({
   id: '/partners',
   path: '/partners',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaKitRoute = MediaKitRouteImport.update({
+  id: '/media-kit',
+  path: '/media-kit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InsightsRoute = InsightsRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/books': typeof BooksRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
+  '/media-kit': typeof MediaKitRoute
   '/partners': typeof PartnersRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/books': typeof BooksRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
+  '/media-kit': typeof MediaKitRoute
   '/partners': typeof PartnersRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/books': typeof BooksRoute
   '/contact': typeof ContactRoute
   '/insights': typeof InsightsRoute
+  '/media-kit': typeof MediaKitRoute
   '/partners': typeof PartnersRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/books'
     | '/contact'
     | '/insights'
+    | '/media-kit'
     | '/partners'
     | '/services/$slug'
     | '/services/'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/books'
     | '/contact'
     | '/insights'
+    | '/media-kit'
     | '/partners'
     | '/services/$slug'
     | '/services'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/books'
     | '/contact'
     | '/insights'
+    | '/media-kit'
     | '/partners'
     | '/services/$slug'
     | '/services/'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   BooksRoute: typeof BooksRoute
   ContactRoute: typeof ContactRoute
   InsightsRoute: typeof InsightsRoute
+  MediaKitRoute: typeof MediaKitRoute
   PartnersRoute: typeof PartnersRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
@@ -141,6 +154,13 @@ declare module '@tanstack/react-router' {
       path: '/partners'
       fullPath: '/partners'
       preLoaderRoute: typeof PartnersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media-kit': {
+      id: '/media-kit'
+      path: '/media-kit'
+      fullPath: '/media-kit'
+      preLoaderRoute: typeof MediaKitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/insights': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   BooksRoute: BooksRoute,
   ContactRoute: ContactRoute,
   InsightsRoute: InsightsRoute,
+  MediaKitRoute: MediaKitRoute,
   PartnersRoute: PartnersRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
