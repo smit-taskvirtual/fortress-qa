@@ -9,6 +9,7 @@ const nav: NavItem[] = [
   { to: "/about", label: "About" },
   { to: "/services", label: "Services", dropdown: true },
   { to: "/insights", label: "Insights" },
+  { to: "/books", label: "Books" },
   { to: "/partners", label: "Partners" },
   { to: "/contact", label: "Contact" },
 ];
