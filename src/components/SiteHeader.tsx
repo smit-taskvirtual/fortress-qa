@@ -11,6 +11,7 @@ const nav: NavItem[] = [
   { to: "/insights", label: "Insights" },
   { to: "/books", label: "Books" },
   { to: "/partners", label: "Partners" },
+  { to: "/media-kit", label: "Media Kit" },
   { to: "/contact", label: "Contact" },
 ];
 
