@@ -12,10 +12,21 @@ export const Route = createFileRoute("/contact")({
       { property: "og:description", content: "Schedule a discreet advisory consultation." },
     ],
   }),
+  validateSearch: (search: Record<string, unknown>) => ({
+    topic: typeof search.topic === "string" ? (search.topic as string) : undefined,
+  }),
   component: ContactPage,
 });
 
+const TOPIC_MAP: Record<string, string> = {
+  speaking: "Public Speaking / PR Events",
+  "cyber-risk": "Cyber Risk Advisory",
+  grc: "Governance, Risk & Compliance",
+};
+
 function ContactPage() {
+  const { topic } = Route.useSearch();
+  const preselected = (topic && TOPIC_MAP[topic]) || "";
   const [submitted, setSubmitted] = useState(false);
 
   return (
@@ -93,10 +104,12 @@ function ContactPage() {
                       Engagement type
                     </label>
                     <select
+                      key={preselected}
                       className="w-full bg-background border border-border rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition"
-                      defaultValue=""
+                      defaultValue={preselected}
                     >
                       <option value="" disabled>Select an option</option>
+                      <option>Public Speaking / PR Events</option>
                       <option>Cyber Risk Advisory</option>
                       <option>Governance, Risk & Compliance</option>
                       <option>Security Architecture & Strategy</option>

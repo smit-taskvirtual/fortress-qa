@@ -10,6 +10,7 @@ const nav: NavItem[] = [
   { to: "/services", label: "Services", dropdown: true },
   { to: "/insights", label: "Insights" },
   { to: "/books", label: "Books" },
+  { to: "/speaking", label: "Public Speaking" },
   { to: "/partners", label: "Partners" },
   { to: "/media-kit", label: "Media Kit" },
   { to: "/contact", label: "Contact" },
