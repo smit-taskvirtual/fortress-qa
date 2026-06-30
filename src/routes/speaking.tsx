@@ -150,7 +150,9 @@ function SpeakingPage() {
       </section>
 
       {/* Topics */}
-      <Section eyebrow="Signature Topics" title="What he speaks about.">
+      <Section>
+        <SectionHeader eyebrow="Signature Topics" title="What he speaks about." />
+        <div className="mt-12">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {topics.map((t) => (
             <article
@@ -165,10 +167,13 @@ function SpeakingPage() {
             </article>
           ))}
         </div>
+      </div>
       </Section>
 
       {/* Formats */}
-      <Section eyebrow="Engagement Formats" title="Formats offered.">
+      <Section>
+        <SectionHeader eyebrow="Engagement Formats" title="Formats offered." />
+        <div className="mt-12">
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {formats.map((f) => (
             <div
@@ -187,10 +192,13 @@ function SpeakingPage() {
             </div>
           ))}
         </div>
+      </div>
       </Section>
 
       {/* Past engagements */}
-      <Section eyebrow="Selected Appearances" title="Previous engagements.">
+      <Section>
+        <SectionHeader eyebrow="Selected Appearances" title="Previous engagements." />
+        <div className="mt-12">
         <div className="rounded-md border border-border divide-y divide-border">
           {pastEngagements.map((e) => (
             <div
@@ -205,6 +213,7 @@ function SpeakingPage() {
             </div>
           ))}
         </div>
+      </div>
       </Section>
 
       {/* Media kit */}
@@ -235,7 +244,9 @@ function SpeakingPage() {
       </section>
 
       {/* Logistics */}
-      <Section eyebrow="For Organizers" title="Logistics & booking notes.">
+      <Section>
+        <SectionHeader eyebrow="For Organizers" title="Logistics & booking notes." />
+        <div className="mt-12">
         <div className="grid md:grid-cols-3 gap-5">
           {[
             {
@@ -266,6 +277,7 @@ function SpeakingPage() {
             </div>
           ))}
         </div>
+      </div>
       </Section>
 
       {/* Final CTA */}
