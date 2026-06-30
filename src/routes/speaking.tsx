@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { PageHero, Section } from "@/components/Section";
+import { PageHero, Section, SectionHeader } from "@/components/Section";
 import {
   Mic,
   Users,
