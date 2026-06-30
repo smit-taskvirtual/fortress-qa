@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SpeakingRouteImport } from './routes/speaking'
 import { Route as PartnersRouteImport } from './routes/partners'
 import { Route as MediaKitRouteImport } from './routes/media-kit'
 import { Route as InsightsRouteImport } from './routes/insights'
@@ -19,6 +20,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
 import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
+const SpeakingRoute = SpeakingRouteImport.update({
+  id: '/speaking',
+  path: '/speaking',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PartnersRoute = PartnersRouteImport.update({
   id: '/partners',
   path: '/partners',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/insights': typeof InsightsRoute
   '/media-kit': typeof MediaKitRoute
   '/partners': typeof PartnersRoute
+  '/speaking': typeof SpeakingRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/insights': typeof InsightsRoute
   '/media-kit': typeof MediaKitRoute
   '/partners': typeof PartnersRoute
+  '/speaking': typeof SpeakingRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services': typeof ServicesIndexRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/insights': typeof InsightsRoute
   '/media-kit': typeof MediaKitRoute
   '/partners': typeof PartnersRoute
+  '/speaking': typeof SpeakingRoute
   '/services/$slug': typeof ServicesSlugRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/media-kit'
     | '/partners'
+    | '/speaking'
     | '/services/$slug'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/media-kit'
     | '/partners'
+    | '/speaking'
     | '/services/$slug'
     | '/services'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/insights'
     | '/media-kit'
     | '/partners'
+    | '/speaking'
     | '/services/$slug'
     | '/services/'
   fileRoutesById: FileRoutesById
@@ -143,12 +155,20 @@ export interface RootRouteChildren {
   InsightsRoute: typeof InsightsRoute
   MediaKitRoute: typeof MediaKitRoute
   PartnersRoute: typeof PartnersRoute
+  SpeakingRoute: typeof SpeakingRoute
   ServicesSlugRoute: typeof ServicesSlugRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/speaking': {
+      id: '/speaking'
+      path: '/speaking'
+      fullPath: '/speaking'
+      preLoaderRoute: typeof SpeakingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/partners': {
       id: '/partners'
       path: '/partners'
@@ -223,18 +243,10 @@ const rootRouteChildren: RootRouteChildren = {
   InsightsRoute: InsightsRoute,
   MediaKitRoute: MediaKitRoute,
   PartnersRoute: PartnersRoute,
+  SpeakingRoute: SpeakingRoute,
   ServicesSlugRoute: ServicesSlugRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
