@@ -104,10 +104,12 @@ function ContactPage() {
                       Engagement type
                     </label>
                     <select
+                      key={preselected}
                       className="w-full bg-background border border-border rounded-sm px-4 py-3 text-sm focus:outline-none focus:border-primary transition"
-                      defaultValue=""
+                      defaultValue={preselected}
                     >
                       <option value="" disabled>Select an option</option>
+                      <option>Public Speaking / PR Events</option>
                       <option>Cyber Risk Advisory</option>
                       <option>Governance, Risk & Compliance</option>
                       <option>Security Architecture & Strategy</option>
